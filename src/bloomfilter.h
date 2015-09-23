@@ -106,9 +106,6 @@ static inline int bloomfilter_Test_Add(BloomFilter * bf, Key * key)
         hash_res = (*hashfunc)(bf->hash_seeds[i], key) % mod;
         result &= mbarray_Test_Set(bf->array, hash_res);
     }
-    if (!result && bf->count_correct) {
-        bf->elem_count ++;
-    }
     return result;
 }
 __attribute__((always_inline))
